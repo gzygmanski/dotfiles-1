@@ -26,5 +26,4 @@ vim.api.nvim_exec([[
 require('plugins')
 require('options')
 require('mappings')
-require('lsp')
-require('treesitter')
+require('packages')

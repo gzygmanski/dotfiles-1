@@ -1,0 +1,6 @@
+require('packages.lspconfig')
+require('packages.completion')
+-- require('packages.deoplete')
+require('packages.telescope')
+require('packages.treesitter')
+require('packages.undotree')
