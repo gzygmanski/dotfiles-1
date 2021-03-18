@@ -4,30 +4,12 @@ source ~/.vimrc
 " ========== Plugins ==========
 call plug#begin('~/.config/nvim/plugged')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'editorconfig/editorconfig-vim'
     Plug 'vim-airline/vim-airline'
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plug 'junegunn/fzf.vim'
-    Plug 'vim-test/vim-test'
-    Plug 'puremourning/vimspector'
-    Plug 'szw/vim-maximizer'
-    Plug 'mbbill/undotree'
-    Plug 'tpope/vim-fugitive'
-    Plug 'airblade/vim-gitgutter'
-    Plug 'rbong/vim-flog'
-    Plug 'dracula/vim', { 'as': 'dracula' }
-    Plug 'ryanoasis/vim-devicons'
     Plug 'sheerun/vim-polyglot'
     Plug 'lepture/vim-velocity'
     Plug 'dsznajder/vscode-es7-javascript-react-snippets', { 'do': 'yarn install --frozen-lockfile && yarn compile' }
     Plug 'ThePrimeagen/vim-be-good'
 call plug#end()
-
-" ========== Theme ==========
-colorscheme dracula
-set termguicolors
-set t_Co=256
-set background=dark
 
 " ========== Auto save ==========
 au FocusGained,BufEnter * :silent! !
@@ -39,33 +21,6 @@ augroup highlight_yank
   autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 augroup END
 
-" ========== Plugins settings ==========
-
-" ===== vim-test =====
-let test#strategy = "neovim"
-
-" ===== undotree =====
-nnoremap <leader>u :UndotreeToggle<CR>
-
-" ===== maximizer =====
-let g:maximizer_set_default_mapping = 0
-nnoremap <leader>m :MaximizerToggle!<CR>
-
-" ===== vimspector =====
-nnoremap <leader>dl :call vimspector#Launch()<CR>
-nnoremap <leader>de :call vimspector#Reset()<CR>
-nnoremap <leader>d<leader> :call vimspector#Continue()<CR>
-
-nmap <leader>ds <Plug>VimspectorStop
-nmap <leader>dr <Plug>VimspectorRestart
-nmap <leader>dp <Plug>VimspectorPause
-nmap <leader>db <Plug>VimspectorToggleBreakpoint
-nmap <leader>dtcb <Plug>VimspectorToggleConditionalBreakpoint
-nmap <leader>dfb <Plug>VimspectorAddFunctionBreakpoint
-nmap <leader>do <Plug>VimspectorStepOver
-nmap <leader>di <Plug>VimspectorStepInto
-nmap <leader>da <Plug>VimspectorStepOut
-nmap <leader>dmc <Plug>VimspectorRunToCursor
 
 " ===== coc.nvim =====
 let g:coc_global_extensions = [
@@ -139,13 +94,4 @@ xmap <silent> <C-s> <Plug>(coc-range-select)
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 vmap <leader>f :CocCommand prettier.formatFile<CR>
 nmap <leader>f :CocCommand prettier.formatFile<CR>
-
-nmap <leader>e :CocCommand explorer<CR>
-nmap <leader>b :CocCommand explorer --position floating<CR>
-
-nnoremap <C-p> :CocCommand fzf-preview.GitFiles<CR>
-nnoremap <leader>p :CocCommand fzf-preview.DirectoryFiles<CR>
-nnoremap <leader>ls :CocCommand fzf-preview.AllBuffers<CR>
-nnoremap <leader>gs :CocCommand fzf-preview.GitStatus<CR>
-nnoremap <leader>fd :CocCommand fzf-preview.CocDiagnostics <CR>
 
